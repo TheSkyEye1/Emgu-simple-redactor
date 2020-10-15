@@ -23,8 +23,6 @@ namespace lab3_2
         private int logicop = 1;
         private Image<Bgr, byte> maskImage;
         Filter_c fil = new Filter_c();
-        private int cof1 = 5;
-        private int cof2 = 5;
         public Form1()
         {
             InitializeComponent();
@@ -240,8 +238,20 @@ namespace lab3_2
 
         private void cartfb_Click(object sender, EventArgs e)
         {
-            var cartoonimage = sourceImage.Copy();
-            IMG2.Image = fil.samef1(cartoonimage, fil.edgefil(fil.blurfil(fil.grayfilter(cartoonimage))), 0.7, 0.3);
+            IMG2.Image = fil.carton(sourceImage);
         }
+
+        private void hsvbtn_Click(object sender, EventArgs e)
+        {
+            IMG2.Image = fil.hsvconvert(sourceImage);
+        }
+
+        private void hsvc_Click(object sender, EventArgs e)
+        {
+            
+            IMG2.Image = fil.hsvadd(sourceImage, hsvch.Value, hsvtr.Value);
+        }
+
+        
     }
 }

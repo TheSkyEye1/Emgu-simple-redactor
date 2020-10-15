@@ -61,6 +61,10 @@
             this.mask1 = new System.Windows.Forms.Button();
             this.edg = new System.Windows.Forms.Button();
             this.cartfb = new System.Windows.Forms.Button();
+            this.hsvbtn = new System.Windows.Forms.Button();
+            this.hsvtr = new System.Windows.Forms.TrackBar();
+            this.hsvc = new System.Windows.Forms.Button();
+            this.hsvch = new System.Windows.Forms.TrackBar();
             ((System.ComponentModel.ISupportInitialize)(this.IMG1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.IMG2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chnltrack)).BeginInit();
@@ -68,6 +72,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.cont)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.img1c)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.img2c)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.hsvtr)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.hsvch)).BeginInit();
             this.SuspendLayout();
             // 
             // IMG1
@@ -383,11 +389,52 @@
             this.cartfb.UseVisualStyleBackColor = true;
             this.cartfb.Click += new System.EventHandler(this.cartfb_Click);
             // 
+            // hsvbtn
+            // 
+            this.hsvbtn.Location = new System.Drawing.Point(1130, 499);
+            this.hsvbtn.Name = "hsvbtn";
+            this.hsvbtn.Size = new System.Drawing.Size(168, 23);
+            this.hsvbtn.TabIndex = 73;
+            this.hsvbtn.Text = "HSV";
+            this.hsvbtn.UseVisualStyleBackColor = true;
+            this.hsvbtn.Click += new System.EventHandler(this.hsvbtn_Click);
+            // 
+            // hsvtr
+            // 
+            this.hsvtr.Location = new System.Drawing.Point(1304, 499);
+            this.hsvtr.Maximum = 255;
+            this.hsvtr.Name = "hsvtr";
+            this.hsvtr.Size = new System.Drawing.Size(168, 45);
+            this.hsvtr.TabIndex = 74;
+            // 
+            // hsvc
+            // 
+            this.hsvc.Location = new System.Drawing.Point(1130, 541);
+            this.hsvc.Name = "hsvc";
+            this.hsvc.Size = new System.Drawing.Size(168, 23);
+            this.hsvc.TabIndex = 75;
+            this.hsvc.Text = "HSV control";
+            this.hsvc.UseVisualStyleBackColor = true;
+            this.hsvc.Click += new System.EventHandler(this.hsvc_Click);
+            // 
+            // hsvch
+            // 
+            this.hsvch.LargeChange = 1;
+            this.hsvch.Location = new System.Drawing.Point(1304, 541);
+            this.hsvch.Maximum = 2;
+            this.hsvch.Name = "hsvch";
+            this.hsvch.Size = new System.Drawing.Size(168, 45);
+            this.hsvch.TabIndex = 76;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1484, 590);
+            this.Controls.Add(this.hsvch);
+            this.Controls.Add(this.hsvc);
+            this.Controls.Add(this.hsvtr);
+            this.Controls.Add(this.hsvbtn);
             this.Controls.Add(this.cartfb);
             this.Controls.Add(this.edg);
             this.Controls.Add(this.mask1);
@@ -429,6 +476,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.cont)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.img1c)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.img2c)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.hsvtr)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.hsvch)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -468,6 +517,10 @@
         private System.Windows.Forms.Button mask1;
         private System.Windows.Forms.Button edg;
         private System.Windows.Forms.Button cartfb;
+        private System.Windows.Forms.Button hsvbtn;
+        private System.Windows.Forms.TrackBar hsvtr;
+        private System.Windows.Forms.Button hsvc;
+        private System.Windows.Forms.TrackBar hsvch;
     }
 }
 

@@ -10,6 +10,7 @@ using Emgu.CV;
 using Emgu.CV.CvEnum;
 using Emgu.CV.Util;
 using Microsoft.CSharp.RuntimeBinder;
+using System.Security.Authentication.ExtendedProtection;
 
 namespace lab3_2
 {
@@ -321,12 +322,6 @@ namespace lab3_2
             return sepiahimage;
         }
 
-        public Image<Bgr, byte> edgefil(Image<Bgr,byte> image)
-        {
-            var edges = grayfilter(image);
-            edges = edges.ThresholdAdaptive(new Gray(255), AdaptiveThresholdType.MeanC,ThresholdType.Binary, 3, new Gray(0.03));
-            return edges;
-        }
 
         public Image<Bgr, byte> samef1(Image<Bgr, byte> image, Image<Gray, byte> secimage, double cf1, double cf2)
         {
@@ -350,6 +345,62 @@ namespace lab3_2
 
             }
             return finalimage;
+        }
+
+        public Image<Hsv, byte> hsvconvert(Image<Bgr, byte> img)
+        {
+            var hsvImage = img.Convert<Hsv, byte>();
+            return hsvImage;
+        }
+
+        public Image<Hsv, byte> hsvadd(Image<Bgr, byte> img, int chn, int val)
+        {
+            var hsvImage = hsvconvert(img);
+            for (int i = 0; i < 640; i++)
+            {
+                for (int j = 0; j < 480; j++)
+                {
+                    if (hsvImage.Data[j, i, chn] + val > 255)
+                    {
+                        hsvImage.Data[j, i, chn] = 255;
+                    }
+                    else
+                    {
+                        hsvImage.Data[j, i, chn] += Convert.ToByte(val);
+                    }
+                }
+            }
+            return hsvImage;
+        }
+
+        public Image<Gray, byte> edgefil(Image<Bgr, byte> image)
+        {
+            var edges = grayfilter(image);
+            Image<Gray, byte> grayedges = edges.Convert<Gray, byte>();
+            grayedges = grayedges.ThresholdAdaptive(new Gray(255), AdaptiveThresholdType.MeanC, ThresholdType.Binary, 3, new Gray(0.03));
+            return grayedges;
+        }
+        public Image<Bgr, byte> carton(Image<Bgr, byte> img)
+        {
+            var carimg = blurfil(img);
+            Image<Gray, byte> grayedge = edgefil(carimg);
+            for (int i = 0; i < 640; i++)
+            {
+                for (int j = 0; j < 480; j++)
+                {
+                    if (grayedge.Data[j,i,0] > 0)
+                    {
+
+                    }
+                    else
+                    {
+                        carimg.Data[j, i, 0] = 0;
+                        carimg.Data[j, i, 1] = 0;
+                        carimg.Data[j, i, 2] = 0;
+                    }
+                }
+            }
+            return carimg;
         }
     }
 }
